@@ -28,4 +28,24 @@ QUnit.module('Тестируем функцию euclid', function () {
 		const temp = [80325, 55275, 8746650, 3000000, 45672375, 225, 54675];
 		assert.strictEqual(euclid(...[...temp, ...temp, ...temp, ...temp, ...temp]), euclid(...temp));
 	});
+	
+	QUnit.test('Функция должна правильно обрабатывать отсутствие аргументов', function (assert) {
+		assert.strictEqual(euclid(), undefined);
+	});
+
+	QUnit.test('Функция должна правильно находить НОД нескольких натуральных чисел', function (assert) {
+		assert.strictEqual(euclid(14641, 121, 44, 161051), 11, 'euclid(14641, 121, 44, 161051)=== 11');
+		assert.strictEqual(euclid(135, 945, 255, 1215), 15, 'euclid(135, 945, 255, 1215))=== 15');
+		assert.strictEqual(euclid(69, 1173, 115, 345), 23, 'euclid(69, 1173, 115, 345)=== 23');
+		assert.strictEqual(euclid(222, 9324, 4662, 2331, 20979, 40404, 242424,6327), 111, 'euclid(222, 9324, 4662, 2331, 20979, 40404, 242424,6327) === 111');
+		assert.strictEqual(euclid(1092, 312, 1248, 15288, 2028, 51012), 156, 'euclid(1092, 312, 1248, 15288, 2028, 51012) === 156');
+	});
+	
+	QUnit.test('Функция должна выводить одинаковый результат независимо от порядка аргументов', function (assert) {
+		assert.strictEqual(euclid(2, 4, 8, 16 ), euclid(8, 2, 16, 4 ), 'euclid(2, 4, 8, 16 ) === euclid(8, 2, 16, 4 )');
+		assert.strictEqual(euclid(22, 144, 166), euclid(166, 22, 144), 'euclid(22, 144, 166) === euclid(166, 22, 144)');
+		assert.strictEqual(euclid(17, 13, 34), euclid(17, 13, 34), 'euclid(17, 13, 34) === euclid(17, 13, 34)');
+		assert.strictEqual(euclid(121, 44, 14641, 161051), euclid(14641, 121, 44, 161051), 'euclid(121, 44, 14641, 161051) === euclid(14641, 121, 44, 161051)');
+		assert.strictEqual(euclid(15765, 346543, 3456543), euclid(3456543, 346543, 15765), 'euclid(15765, 346543, 3456543) === euclid(3456543, 346543, 15765)');
+	});
 });
