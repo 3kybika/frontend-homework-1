@@ -10,7 +10,7 @@ const euclid = function () {
 	let divider = Math.min.apply(Math, arguments);
   
 	if (divider ===0){
-		return null;
+		return undefined;
 	}
 	
     for (let i = 0; i < arguments.length; ++i) { 
