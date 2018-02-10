@@ -7,18 +7,18 @@
 		return undefined;
 	}
 	
-	let divider = Math.min(...args);
+	const divider = Math.min(...args);
 	
 	if (!divider){
 		// Wrong parameter
 		return undefined;
 	}
 	
-	return args.reduce(function(divider, residue){
+	return args.reduce((divider, residue) =>{
 		// Euclid's algorithm for finding the GCD
 		while (divider){
-			[divider, residue] = [residue % divider , divider]
+			[divider, residue] = [residue % divider , divider];
 		}
-		return residue
+		return residue;
 	}, divider);
 };
